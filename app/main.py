@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api import stocks, pipeline, analysis
+from app.api import stocks, pipeline, analysis, health
 
 app = FastAPI(
     title="Stock Intelligence API",
@@ -10,6 +10,7 @@ app = FastAPI(
 app.include_router(stocks.router,   prefix="/api/stocks")
 app.include_router(pipeline.router, prefix="/api/pipeline")
 app.include_router(analysis.router, prefix="/api/analysis")
+app.include_router(health.router)
 
 @app.get("/health")
 def health_check():
